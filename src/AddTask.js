@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useStateValue } from "./StateProvider";
+import { v4 as uuidv4 } from "uuid";
 
 function AddTask() {
   const [{ todolist }, dispatch] = useStateValue();
@@ -11,12 +12,11 @@ function AddTask() {
       type: "ADD_TASK",
       item: {
         name: name,
-        id: 2,
+        id: uuidv4(),
         completed: false,
       },
     });
     setName("");
-    console.log({ todolist });
   };
 
   return (
