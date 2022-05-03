@@ -1,5 +1,6 @@
 export const initialState = {
   todolist: [],
+  filteredtodolist: [],
 };
 
 const reducer = (state, action) => {
@@ -8,6 +9,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         todolist: [...state.todolist, action.item],
+        filteredtodolist: [...state.filteredtodolist, action.item],
       };
 
     case "DELETE_TASK":
@@ -19,12 +21,20 @@ const reducer = (state, action) => {
       return {
         ...state,
         todolist: newtodolist,
+        filteredtodolist: newtodolist.filter(
+          (todo) => todo.completed === false
+        ),
       };
 
     case "COMPLETE_TASK":
       let index2 = state.todolist.findIndex((todo) => todo.id === action.id);
       state.todolist[index2].completed = !action.completed;
-      return state;
+      return {
+        ...state,
+        filteredtodolist: state.todolist.filter(
+          (todo) => todo.completed === false
+        ),
+      };
 
     default:
       return state;
