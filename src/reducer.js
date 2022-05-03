@@ -11,7 +11,7 @@ const reducer = (state, action) => {
       };
 
     case "DELETE_TASK":
-      const index = state.todolist.findIndex((todo) => todo.id === action.id);
+      let index = state.todolist.findIndex((todo) => todo.id === action.id);
       let newtodolist = [...state.todolist];
       if (index >= 0) {
         newtodolist.splice(index, 1);
@@ -22,8 +22,8 @@ const reducer = (state, action) => {
       };
 
     case "COMPLETE_TASK":
-      const index2 = state.todolist.findIndex((todo) => todo.id === action.id);
-      state[index2].completed = true;
+      let index2 = state.todolist.findIndex((todo) => todo.id === action.id);
+      state.todolist[index2].completed = !action.completed;
       return state;
 
     default:
