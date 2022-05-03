@@ -21,6 +21,11 @@ const reducer = (state, action) => {
         todolist: newtodolist,
       };
 
+    case "COMPLETE_TASK":
+      const index2 = state.todolist.findIndex((todo) => todo.id === action.id);
+      state[index2].completed = true;
+      return state;
+
     default:
       return state;
   }
