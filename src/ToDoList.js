@@ -29,12 +29,18 @@ function ToDoList() {
   const OrderToDoList = () => {
     if (sort === 0) {
       todolist.sort((a, b) => a.name.localeCompare(b.name));
+      filteredtodolist.sort((a, b) => a.name.localeCompare(b.name));
+
       setSort(1);
     } else if (sort === 1) {
       todolist.sort((a, b) => b.name.localeCompare(a.name));
+      filteredtodolist.sort((a, b) => b.name.localeCompare(a.name));
+
       setSort(2);
     } else if (sort === 2) {
       todolist.sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+      filteredtodolist.sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+
       setSort(0);
     }
   };
