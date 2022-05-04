@@ -14,6 +14,7 @@ function AddTask() {
         name: name,
         id: uuidv4(),
         completed: false,
+        dateAdded: Date(),
       },
     });
     setName("");
@@ -21,7 +22,7 @@ function AddTask() {
 
   return (
     <div className="addTask">
-      <form className="addTask_form" onSubmit={handleSubmit}>
+      <form className="addTask_form" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           className="addTask_text"

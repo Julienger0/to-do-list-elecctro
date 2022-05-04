@@ -5,6 +5,7 @@ function ToDoList() {
   const [checked, setChecked] = useState(false);
 
   const [{ todolist, filteredtodolist }, dispatch] = useStateValue();
+  const [sort, setSort] = useState(0);
 
   const DeleteTask = (id) => {
     dispatch({
@@ -25,9 +26,22 @@ function ToDoList() {
     setChecked(!checked);
   };
 
+  const OrderToDoList = () => {
+    if (sort === 0) {
+      todolist.sort((a, b) => a.name.localeCompare(b.name));
+      setSort(1);
+    } else if (sort === 1) {
+      todolist.sort((a, b) => b.name.localeCompare(a.name));
+      setSort(2);
+    } else if (sort === 2) {
+      todolist.sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+      setSort(0);
+    }
+  };
+
   return (
     <div className="todolist">
-      <h4 className="todolist_title">Tasks</h4>
+      <button onClick={() => OrderToDoList()}>Tasks</button>
       <label>
         <input type="checkbox" checked={checked} onChange={handleChange} />
         Hide Completed
