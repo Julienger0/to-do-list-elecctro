@@ -45,6 +45,13 @@ function ToDoList() {
     }
   };
 
+  const EditTask = (id) => {
+    dispatch({
+      type: "EDIT",
+      id: id,
+    });
+  };
+
   return (
     <div className="todolist">
       <button onClick={() => OrderToDoList()}>Tasks</button>
@@ -59,7 +66,7 @@ function ToDoList() {
                 Complete
               </button>
               <p>{item.name}</p>
-              <button>Edit</button>
+              <button onClick={() => EditTask(item.id)}>Edit</button>
               <button onClick={() => DeleteTask(item.id)}>Delete</button>
             </div>
           ))
@@ -69,7 +76,7 @@ function ToDoList() {
                 Complete
               </button>
               <p>{item.name}</p>
-              <button>Edit</button>
+              <button onClick={() => EditTask(item.id)}>Edit</button>
               <button onClick={() => DeleteTask(item.id)}>Delete</button>
             </div>
           ))}

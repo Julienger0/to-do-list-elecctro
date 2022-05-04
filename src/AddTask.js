@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStateValue } from "./StateProvider";
 import { v4 as uuidv4 } from "uuid";
 
 function AddTask() {
-  const [{ todolist }, dispatch] = useStateValue();
+  const [{ todolist, edit, editID }, dispatch] = useStateValue();
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "ADD_TASK",
-      item: {
+    if (edit === false) {
+      dispatch({
+        type: "ADD_TASK",
+        item: {
+          name: name,
+          id: uuidv4(),
+          completed: false,
+          dateAdded: Date(),
+        },
+      });
+    } else {
+      dispatch({
+        type: "EDIT_TASK",
         name: name,
-        id: uuidv4(),
-        completed: false,
-        dateAdded: Date(),
-      },
-    });
+        id: editID,
+      });
+    }
     setName("");
   };
 
@@ -32,7 +40,7 @@ function AddTask() {
           required
         />
         <button type="submit" className="addTask_submit">
-          Create
+          {edit ? "Edit" : "Create"}
         </button>
       </form>
     </div>
