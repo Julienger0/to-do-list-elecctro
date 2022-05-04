@@ -1,3 +1,94 @@
 * {
   margin: 0;
 }
+
+body {
+  background-color: #c42c2c;
+}
+
+.app {
+  margin: 0 auto;
+  margin-top: 10%;
+  max-width: 50%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.addTask {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.addTask_form {
+  text-align: center;
+}
+
+.addTask_text {
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: rgb(196, 196, 196);
+  cursor: pointer;
+}
+
+.addTask_submit {
+  padding: 8px;
+  background: rgb(203, 230, 238);
+  border-color: transparent;
+  font-size: 16px;
+  min-width: 10%;
+  color: #804de8;
+  cursor: pointer;
+}
+
+.todolist_header {
+  display: flex;
+  justify-content: space-between;
+}
+.todolist_header_btn {
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.todolist_check {
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+  cursor: pointer;
+  margin-right: 1px;
+}
+
+.todolist_todo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.todolist_todo_left {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  width: 80%;
+}
+
+.todolist_todo_left:hover {
+  background-color: rgba(243, 21, 21, 0.386);
+  transition: all 0.5s linear;
+}
+
+.todolist_todo_btn {
+  margin-right: 5px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useStateValue } from "./StateProvider";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 function ToDoList() {
   const [checked, setChecked] = useState(false);
@@ -54,30 +58,76 @@ function ToDoList() {
 
   return (
     <div className="todolist">
-      <button onClick={() => OrderToDoList()}>Tasks</button>
-      <label>
-        <input type="checkbox" checked={checked} onChange={handleChange} />
-        Hide Completed
-      </label>
+      <div className="todolist_header">
+        <button className="todolist_header_btn" onClick={() => OrderToDoList()}>
+          Tasks
+        </button>
+        <label className="todolist_check">
+          <input type="checkbox" checked={checked} onChange={handleChange} />
+          Hide Completed
+        </label>
+      </div>
       {checked
         ? filteredtodolist.map((item, id) => (
             <div className="todolist_todo" key={id}>
-              <button onClick={() => CompleteTask(item.id, item.completed)}>
-                Complete
-              </button>
-              <p>{item.name}</p>
-              <button onClick={() => EditTask(item.id)}>Edit</button>
-              <button onClick={() => DeleteTask(item.id)}>Delete</button>
+              <div className="todolist_todo_left">
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => CompleteTask(item.id, item.completed)}
+                >
+                  {item.completed ? (
+                    <CheckBoxIcon />
+                  ) : (
+                    <CheckBoxOutlineBlankIcon />
+                  )}
+                </button>
+                <p>{item.name}</p>
+              </div>
+              <div className="todolist_todo_right">
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => EditTask(item.id)}
+                >
+                  <EditIcon />
+                </button>
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => DeleteTask(item.id)}
+                >
+                  <DeleteIcon />
+                </button>
+              </div>
             </div>
           ))
         : todolist.map((item, id) => (
             <div className="todolist_todo" key={id}>
-              <button onClick={() => CompleteTask(item.id, item.completed)}>
-                Complete
-              </button>
-              <p>{item.name}</p>
-              <button onClick={() => EditTask(item.id)}>Edit</button>
-              <button onClick={() => DeleteTask(item.id)}>Delete</button>
+              <div className="todolist_todo_left">
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => CompleteTask(item.id, item.completed)}
+                >
+                  {item.completed ? (
+                    <CheckBoxIcon />
+                  ) : (
+                    <CheckBoxOutlineBlankIcon />
+                  )}
+                </button>
+                <p>{item.name}</p>
+              </div>
+              <div className="todolist_todo_right">
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => EditTask(item.id)}
+                >
+                  <EditIcon />
+                </button>
+                <button
+                  className="todolist_todo_btn"
+                  onClick={() => DeleteTask(item.id)}
+                >
+                  <DeleteIcon />
+                </button>
+              </div>
             </div>
           ))}
     </div>
